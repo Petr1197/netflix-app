@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "paths": {
+      "~/configuration": [
+        "./configuration.ts"
+      ]
+    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
