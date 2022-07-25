@@ -1,21 +1,21 @@
 import Link from "next/link";
 import { FormEvent, useCallback, useEffect } from "react";
-import { useSignUpWithEmailAndPassword } from "../core/hooks/UseSignupWithEmailPassword.tsx";
+import { useSignInWithEmailAndPassword } from '../core/hooks/useSignInWithEmailAndPAssword';
 
-function EmailPasswordSignUpForm(
+function EmailPasswordSignInForm(
   props: React.PropsWithChildren<{
-    onSignup: () => void;
+    onSignin: () => void;
   }>
 ) {
-  const [signUp, state] =
-    useSignUpWithEmailAndPassword();
+  const [signIn, state] =
+    useSignInWithEmailAndPassword();
 
   const loading = state.loading;
   const error = state.error;
 
   useEffect(() => {
     if (state.success) {
-      props.onSignup();
+      props.onSignin();
     }
   }, [props, state.success]);
 
@@ -34,9 +34,9 @@ function EmailPasswordSignUpForm(
       const password = data.get(`password`) as string;
 
       // sign user up
-      return signUp(email, password);
+      return signIn(email, password);
     },
-    [loading, props, signUp]
+    [loading, props, signIn]
   );
 
   return (
@@ -62,7 +62,7 @@ function EmailPasswordSignUpForm(
         disabled={loading}
         className="bg-red-600 py-3 my-6 rounded font-bold"
       >
-        Sign Up
+        Sign In
       </button>
       <div className="flex justify-between items-center text-sm text-gray-400">
         <p>
@@ -73,12 +73,12 @@ function EmailPasswordSignUpForm(
       </div>
         <p className="py-8">
           <span className="text-gray-400 pr-2">
-            Already Subscribed to Nextflix?
+            Dont have An Account? 
           </span>
-          <Link href="/Login">Sign In</Link>
+          <Link href="/auth/SignUp">Sign Up</Link>
         </p>
     </form>
   );
 }
 
-export default EmailPasswordSignUpForm;
+export default EmailPasswordSignInForm;

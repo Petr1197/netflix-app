@@ -1,5 +1,11 @@
 import { useCallback, useState } from "react";
 
+enum Nothing {
+  Nothing = 'Nothing'
+}
+
+type Maybe<A> = A | undefined;
+
 type State<Data, ErrorType> =
   | {
       data: Data;

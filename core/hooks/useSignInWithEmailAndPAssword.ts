@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useAuth } from "reactfire";
 import { FirebaseError } from "firebase/app";
 import { UserCredential, signInWithEmailAndPassword } from "firebase/auth";
-
+import {setDoc, doc} from 'firebase/firestore'
 import { useRequestState } from "./useRequestState";
 
 export function useSignInWithEmailAndPassword() {
@@ -22,6 +22,7 @@ export function useSignInWithEmailAndPassword() {
         email,
         password
       );
+      
 
       setData(credential);
     } catch (error) {
