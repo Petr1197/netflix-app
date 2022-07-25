@@ -12,14 +12,7 @@ const SavedShows = () => {
   const user = auth.currentUser;
   const movieID = doc(db, "users", `${user?.email}`);
 
-  useEffect(() => {
-    const fetchDoc = async () => {
-      const docSnap = await getDoc(movieID);
-      setMovies(docSnap.data()?.savedShows);
-      console.log(movies);
-    };
-    fetchDoc();
-  }, [user?.email]);
+  
   
 
   const slideLeft = () => {
@@ -43,7 +36,14 @@ const SavedShows = () => {
         console.log(error)
         }
     } 
-
+    useEffect(() => {
+        const fetchDoc = async () => {
+        const docSnap = await getDoc(movieID);
+        setMovies(docSnap.data()?.savedShows);
+        console.log(movies);
+        };
+        fetchDoc();
+    }, [user?.email, deleteShow]);
   return (
     <>
       <h2 className='text-white font-bold md:text-xl p-4'>My Shows</h2>
@@ -57,7 +57,7 @@ const SavedShows = () => {
           id={'slider'}
           className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative'
         >
-          {movies.map((item:any) => (
+          {movies?.map((item:any) => (
             <div
               key={item.id}
               className='w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2'

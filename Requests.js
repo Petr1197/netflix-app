@@ -1,6 +1,6 @@
 const key = "ff7f21fbe33f56dc1eeae78455e3159d";
 
-const requests = {
+const requests =  {
   requestPopular: `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`,
   requestTopRated: `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`,
   requestTrending: `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=2`,
@@ -9,3 +9,5 @@ const requests = {
 };
 
 export default requests;
+
+

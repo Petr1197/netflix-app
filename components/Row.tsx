@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import requests from "../pages/Requests";
+import requests from "../Requests";
 import axios from "axios";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 

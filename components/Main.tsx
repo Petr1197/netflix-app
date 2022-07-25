@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import requests from "../pages/Requests";
+import requests from "../Requests";
 
 interface movies {
   backdrop_path: string;
